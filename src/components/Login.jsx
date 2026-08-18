@@ -68,7 +68,7 @@ export default function Login({ onLoginSuccess }) {
       
       <div className={`login-card ${shake ? 'shake-animation' : ''}`}>
         <div className="login-card-header">
-          <div className="login-logo-circle">MM</div>
+          <img src="/mini%20mines.png" alt="MiniMines Logo" className="login-logo-img" style={{ height: '64px', objectFit: 'contain', marginBottom: '1.25rem' }} />
           <h2>MiniMines</h2>
           <p>Secure Portal Login</p>
         </div>

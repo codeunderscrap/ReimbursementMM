@@ -324,7 +324,7 @@ export default function App() {
       {/* Top Navbar */}
       <nav className="top-nav">
         <div className="brand-section">
-          <div className="logo-circle">MM</div>
+          <img src="/mini%20mines.png" alt="MiniMines Logo" className="brand-logo-img" style={{ height: '36px', objectFit: 'contain' }} />
           <div className="brand-text">
             <h1>MiniMines</h1>
             <p>Reimbursement Form Generator</p>
