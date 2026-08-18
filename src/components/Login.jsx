@@ -37,7 +37,7 @@ export default function Login({ onLoginSuccess }) {
     }
 
     try {
-      const hashedInputUser = await computeSha256(username.trim());
+      const hashedInputUser = await computeSha256(username.trim().toLowerCase());
       const hashedInputPass = await computeSha256(password);
 
       if (hashedInputUser === HASHED_USERNAME && hashedInputPass === HASHED_PASSWORD) {
