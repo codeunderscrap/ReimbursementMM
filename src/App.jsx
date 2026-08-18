@@ -9,7 +9,8 @@ import {
   Sparkles, 
   Moon, 
   Sun, 
-  RefreshCw 
+  RefreshCw,
+  LogOut
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import html2canvas from 'html2canvas';
@@ -23,8 +24,30 @@ import { parseReimbursementExcel, exportToExcel } from './utils/excelHandler';
 // Components
 import FormEditor from './components/FormEditor';
 import PreviewPane from './components/PreviewPane';
+import Login from './components/Login';
 
 export default function App() {
+  // Authentication state
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    return localStorage.getItem('mm_reimbursement_auth') === 'true' || 
+           sessionStorage.getItem('mm_reimbursement_auth') === 'true';
+  });
+
+  const handleLoginSuccess = (rememberMe) => {
+    setIsAuthenticated(true);
+    if (rememberMe) {
+      localStorage.setItem('mm_reimbursement_auth', 'true');
+    } else {
+      sessionStorage.setItem('mm_reimbursement_auth', 'true');
+    }
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    localStorage.removeItem('mm_reimbursement_auth');
+    sessionStorage.removeItem('mm_reimbursement_auth');
+  };
+
   // Theme state
   const [theme, setTheme] = useState('light');
 
@@ -292,6 +315,10 @@ export default function App() {
     });
   };
 
+  if (!isAuthenticated) {
+    return <Login onLoginSuccess={handleLoginSuccess} />;
+  }
+
   return (
     <div className="app-container">
       {/* Top Navbar */}
@@ -348,6 +375,17 @@ export default function App() {
             title="Toggle Light/Dark Theme"
           >
             {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
+          </button>
+
+          {/* Logout Button */}
+          <button 
+            type="button" 
+            className="btn btn-secondary btn-icon-only btn-danger" 
+            onClick={handleLogout}
+            title="Log Out of Portal"
+            style={{ marginLeft: '0.25rem' }}
+          >
+            <LogOut size={16} />
           </button>
         </div>
       </nav>
