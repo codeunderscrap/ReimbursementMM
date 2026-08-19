@@ -51,6 +51,9 @@ export default function App() {
   // Theme state
   const [theme, setTheme] = useState('light');
 
+  // Logo layout style: 'left' (side-by-side) or 'top' (logo on top)
+  const [logoLayout, setLogoLayout] = useState('left');
+
   // Employee details state
   const [employeeDetails, setEmployeeDetails] = useState({
     title: 'Reimbursement 26-27',
@@ -332,16 +335,6 @@ export default function App() {
         </div>
 
         <div className="action-bar">
-          {/* Load Sample Button */}
-          <button 
-            type="button" 
-            className="btn btn-secondary" 
-            onClick={handleLoadSample}
-            title="Load the Md Arsalan sample data from the Excel template"
-          >
-            <Sparkles size={16} style={{ color: 'var(--primary)' }} />
-            Load Sample Data
-          </button>
 
           {/* Import Excel */}
           <div className="file-upload-wrapper">
@@ -415,8 +408,42 @@ export default function App() {
             backgroundColor: 'var(--bg-preview)',
             borderBottom: '1px solid var(--border-color)'
           }}>
-            <span style={{ marginRight: 'auto', fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-muted)' }}>
-              Live Print Preview
+            <span style={{ marginRight: 'auto', fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+              <span>Live Print Preview</span>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', backgroundColor: 'var(--bg-app)', padding: '2px', borderRadius: '6px', border: '1px solid var(--border-color)' }}>
+                <button 
+                  type="button" 
+                  className="btn"
+                  style={{ 
+                    padding: '4px 8px', 
+                    fontSize: '0.7rem', 
+                    borderRadius: '4px',
+                    backgroundColor: logoLayout === 'left' ? 'var(--primary)' : 'transparent',
+                    color: logoLayout === 'left' ? 'white' : 'var(--text-main)',
+                    border: 'none',
+                    boxShadow: logoLayout === 'left' ? 'var(--shadow-sm)' : 'none'
+                  }}
+                  onClick={() => setLogoLayout('left')}
+                >
+                  Side Logo
+                </button>
+                <button 
+                  type="button" 
+                  className="btn"
+                  style={{ 
+                    padding: '4px 8px', 
+                    fontSize: '0.7rem', 
+                    borderRadius: '4px',
+                    backgroundColor: logoLayout === 'top' ? 'var(--primary)' : 'transparent',
+                    color: logoLayout === 'top' ? 'white' : 'var(--text-main)',
+                    border: 'none',
+                    boxShadow: logoLayout === 'top' ? 'var(--shadow-sm)' : 'none'
+                  }}
+                  onClick={() => setLogoLayout('top')}
+                >
+                  Top Logo
+                </button>
+              </div>
             </span>
             
             <button 
@@ -468,6 +495,7 @@ export default function App() {
             totalReimbursement={totalReimbursement}
             totalInWords={totalInWords}
             previewRef={previewRef}
+            logoLayout={logoLayout}
           />
         </div>
       </main>

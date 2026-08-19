@@ -6,7 +6,8 @@ export default function PreviewPane({
   advance, 
   totalReimbursement, 
   totalInWords, 
-  previewRef 
+  previewRef,
+  logoLayout = 'left'
 }) {
   
   // Pad the items array to at least 12 rows to maintain the Excel sheet layout shape
@@ -46,14 +47,25 @@ export default function PreviewPane({
       <div className="a4-preview-sheet" ref={previewRef} id="reimbursement-print-area">
         
         {/* Company Header Block */}
-        <div className="preview-sheet-header" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: '1.5rem', borderBottom: '3px double #0f5132', paddingBottom: '1rem', marginBottom: '1.5rem', textAlign: 'left' }}>
-          <img src="/mini%20mines.png" alt="MiniMines Logo" style={{ height: '56px', objectFit: 'contain' }} />
-          <div>
-            <h2 style={{ margin: 0, fontSize: '1.15rem', color: '#0f5132', fontFamily: "'Outfit', sans-serif", fontWeight: 800, letterSpacing: '0.03em' }}>MINIMINES CLEANTECH SOLUTIONS PRIVATE LIMITED</h2>
-            <h3 style={{ margin: '0.1rem 0 0.25rem 0', fontSize: '0.85rem', color: '#555', fontWeight: 500 }}>BENGALURU</h3>
-            <h4 style={{ margin: 0, fontSize: '0.9rem', color: '#000', fontWeight: 700, letterSpacing: '0.02em' }}>EXPENSES FOR CONVEYANCE & REIMBURSEMENT</h4>
+        {logoLayout === 'left' ? (
+          <div className="preview-sheet-header" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: '1.5rem', borderBottom: '3px double #0f5132', paddingBottom: '0.75rem', marginBottom: '1rem', textAlign: 'left' }}>
+            <img src="/mini%20mines.png" alt="MiniMines Logo" style={{ height: '56px', objectFit: 'contain' }} />
+            <div>
+              <h2 style={{ margin: 0, fontSize: '1.15rem', color: '#0f5132', fontFamily: "'Outfit', sans-serif", fontWeight: 800, letterSpacing: '0.03em' }}>MINIMINES CLEANTECH SOLUTIONS PRIVATE LIMITED</h2>
+              <h3 style={{ margin: '0.1rem 0 0.25rem 0', fontSize: '0.85rem', color: '#555', fontWeight: 500 }}>BENGALURU</h3>
+              <h4 style={{ margin: 0, fontSize: '0.9rem', color: '#000', fontWeight: 700, letterSpacing: '0.02em' }}>EXPENSES FOR CONVEYANCE & REIMBURSEMENT</h4>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="preview-sheet-header" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderBottom: '3px double #0f5132', paddingBottom: '0.75rem', marginBottom: '1rem', textAlign: 'center' }}>
+            <img src="/mini%20mines.png" alt="MiniMines Logo" style={{ height: '56px', objectFit: 'contain', marginBottom: '0.5rem' }} />
+            <div>
+              <h2 style={{ margin: 0, fontSize: '1.15rem', color: '#0f5132', fontFamily: "'Outfit', sans-serif", fontWeight: 800, letterSpacing: '0.03em' }}>MINIMINES CLEANTECH SOLUTIONS PRIVATE LIMITED</h2>
+              <h3 style={{ margin: '0.1rem 0 0.25rem 0', fontSize: '0.85rem', color: '#555', fontWeight: 500 }}>BENGALURU</h3>
+              <h4 style={{ margin: 0, fontSize: '0.9rem', color: '#000', fontWeight: 700, letterSpacing: '0.02em' }}>EXPENSES FOR CONVEYANCE & REIMBURSEMENT</h4>
+            </div>
+          </div>
+        )}
 
         {/* Metadata Grid */}
         <div className="document-meta-grid">

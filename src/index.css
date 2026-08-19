@@ -383,7 +383,7 @@ body {
 .a4-preview-sheet {
   width: 210mm;
   min-height: 297mm;
-  padding: 15mm;
+  padding: 10mm 12mm;
   background-color: #ffffff;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   box-sizing: border-box;
@@ -397,9 +397,9 @@ body {
 
 .preview-sheet-header {
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   border-bottom: 3px double #0f5132;
-  padding-bottom: 1rem;
+  padding-bottom: 0.75rem;
 }
 
 .preview-sheet-header h2 {
@@ -425,14 +425,13 @@ body {
   letter-spacing: 0.02em;
 }
 
-/* Document Meta-Data Grid */
 .document-meta-grid {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
-  row-gap: 0.5rem;
+  row-gap: 0.35rem;
   column-gap: 2rem;
-  margin-bottom: 1.5rem;
-  font-size: 0.85rem;
+  margin-bottom: 0.8rem;
+  font-size: 0.82rem;
 }
 
 .meta-item {
@@ -456,8 +455,10 @@ body {
 .preview-table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 1rem;
-  font-size: 0.72rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.7rem;
+  page-break-inside: avoid;
+  break-inside: avoid;
 }
 
 .preview-table th {
@@ -465,13 +466,13 @@ body {
   color: #ffffff;
   font-weight: 700;
   border: 1px solid #000000;
-  padding: 6px 4px;
+  padding: 5px 4px;
   text-align: center;
 }
 
 .preview-table td {
   border: 1px solid #000000;
-  padding: 6px 4px;
+  padding: 5px 4px;
   vertical-align: middle;
 }
 
@@ -497,10 +498,12 @@ body {
 
 .words-row {
   border: 1px solid #000;
-  padding: 10px;
+  padding: 8px 10px;
   background-color: #fcfcfc;
-  font-size: 0.8rem;
-  margin-bottom: 1.5rem;
+  font-size: 0.78rem;
+  margin-bottom: 0.8rem;
+  page-break-inside: avoid;
+  break-inside: avoid;
 }
 
 .words-row span {
@@ -518,12 +521,14 @@ body {
 .preview-signatures-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  margin-bottom: 2rem;
+  gap: 1.5rem;
+  margin-bottom: 1.2rem;
+  page-break-inside: avoid;
+  break-inside: avoid;
 }
 
 .signature-box {
-  margin-top: 2rem;
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
 }
@@ -545,7 +550,9 @@ body {
 .preview-payment-section {
   margin-top: auto; /* Push to bottom of A4 if space permits */
   border-top: 1px dashed #0f5132;
-  padding-top: 1rem;
+  padding-top: 0.75rem;
+  page-break-inside: avoid;
+  break-inside: avoid;
 }
 
 .payment-title {
