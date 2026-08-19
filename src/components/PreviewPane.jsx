@@ -10,9 +10,9 @@ export default function PreviewPane({
   logoLayout = 'left'
 }) {
   
-  // Pad the items array to at least 12 rows to maintain the Excel sheet layout shape
+  // Pad the items array to at least 10 rows to maintain the Excel sheet layout shape
   const paddedItems = [...items];
-  const targetRowCount = 12;
+  const targetRowCount = 10;
   const paddingNeeded = targetRowCount - items.length;
   
   for (let i = 0; i < paddingNeeded; i++) {
